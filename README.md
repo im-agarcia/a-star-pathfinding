@@ -10,20 +10,12 @@ Abrí `index.html` en el navegador, o serví la carpeta:
 npx --yes serve .
 ```
 
-## Cloudflare Pages
+## Cómo usarlo
 
-1. Subí esta carpeta a un repo de GitHub (o usá Direct Upload).
-2. En [Cloudflare Dashboard → Pages](https://dash.cloudflare.com/) → **Create project**.
-3. Framework preset: **None**.
-4. Build command: *(vacío)*.
-5. Output directory: `/` (o la carpeta donde estén estos archivos).
-6. Deploy.
-
-Con Direct Upload:
-
-```bash
-npx wrangler pages deploy . --project-name=astar-cerrados-abiertos
-```
+1. Elegí columnas y filas y tocá **Crear grilla**.
+2. Con los modos, hacé clic en celdas: **Bloquear**, **Punto A** o **Punto B**.
+3. Tocá **Calcular A\*** (o **Paso a paso**).
+4. Cuando hay solución, el camino óptimo se marca con un **borde amarillo intenso** (sin pintar el fondo), para que sigan legibles los números de cada celda.
 
 ## Controles
 

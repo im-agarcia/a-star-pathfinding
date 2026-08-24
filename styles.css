@@ -51,6 +51,30 @@ body {
   font-size: 0.9rem;
 }
 
+.how-to {
+  margin: 0.85rem 0 0;
+  padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+  background: var(--panel);
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.how-to li + li {
+  margin-top: 0.35rem;
+}
+
+.how-to strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.how-to .path-hint {
+  color: #ffe600;
+}
+
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -346,7 +370,7 @@ body {
 }
 
 .cell.path {
-  box-shadow: inset 0 0 0 3px #fbbf24;
+  box-shadow: inset 0 0 0 3px #ffe600;
 }
 
 .cell.in-closed {
