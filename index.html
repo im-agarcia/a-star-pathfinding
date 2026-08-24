@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A* — Cerrados / Abiertos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>A* Pathfinding</h1>
+      <p class="subtitle">Listas Cerrados / Abiertos · g=10 ortogonal · g=15 diagonal · h=Manhattan×10</p>
+    </header>
+
+    <section class="controls">
+      <div class="control-group">
+        <label for="cols">Columnas (X)</label>
+        <input id="cols" type="number" min="2" max="20" value="4" />
+      </div>
+      <div class="control-group">
+        <label for="rows">Filas (Y)</label>
+        <input id="rows" type="number" min="2" max="20" value="4" />
+      </div>
+      <button type="button" id="btn-resize" class="btn">Crear grilla</button>
+
+      <div class="mode-group" role="group" aria-label="Modo de edición">
+        <button type="button" class="btn mode active" data-mode="block">Bloquear</button>
+        <button type="button" class="btn mode" data-mode="start">Punto A</button>
+        <button type="button" class="btn mode" data-mode="end">Punto B</button>
+        <button type="button" class="btn mode" data-mode="clear">Borrar celda</button>
+      </div>
+
+      <div class="action-group">
+        <button type="button" id="btn-run" class="btn btn-primary">Calcular A*</button>
+        <button type="button" id="btn-step" class="btn">Paso a paso</button>
+        <button type="button" id="btn-reset" class="btn btn-ghost">Limpiar cálculo</button>
+      </div>
+    </section>
+
+    <main class="workspace">
+      <aside class="lists-panel">
+        <div class="tchart">
+          <div class="tchart-head">
+            <span>Cerrados</span>
+            <span>Abiertos</span>
+          </div>
+          <div class="tchart-body">
+            <div id="closed-list" class="tchart-col"></div>
+            <div id="open-list" class="tchart-col"></div>
+          </div>
+        </div>
+        <p id="status" class="status">Definí A, B y obstáculos, luego calculá.</p>
+        <div id="legend" class="legend">
+          <div><span class="swatch f">f</span> esquina sup. izq. = g + h</div>
+          <div><span class="swatch id">n</span> esquina sup. der. = nº de bloque</div>
+          <div><span class="swatch g">g</span> esquina inf. izq. = costo desde A</div>
+          <div><span class="swatch h">h</span> esquina inf. der. = heurística a B</div>
+          <div><span class="swatch arrow">→</span> centro = flecha al padre</div>
+        </div>
+      </aside>
+
+      <div class="grid-wrap">
+        <div id="grid" class="grid" role="grid" aria-label="Grilla A*"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
