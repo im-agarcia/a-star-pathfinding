@@ -10,17 +10,6 @@ Abrí `index.html` en el navegador, o serví la carpeta:
 npx --yes serve .
 ```
 
-## Cloudflare Pages
-
-1. Subí esta carpeta a un repo de GitHub (o usá Direct Upload).
-2. En [Cloudflare Dashboard → Pages](https://dash.cloudflare.com/) → **Create project**.
-3. Framework preset: **None**.
-4. Build command: *(vacío)*.
-5. Output directory: `/` (o la carpeta donde estén estos archivos).
-6. Deploy.
-
-Con Direct Upload:
-
 ```bash
 npx wrangler pages deploy . --project-name=astar-cerrados-abiertos
 ```
