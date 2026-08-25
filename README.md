@@ -15,7 +15,7 @@ npx --yes serve .
 1. Elegí columnas y filas y tocá **Crear grilla**.
 2. Con los modos, hacé clic en celdas: **Bloquear**, **Punto A** o **Punto B**.
 3. Tocá **Calcular A\*** (o **Paso a paso**).
-4. Cuando hay solución, el camino óptimo se marca con un **borde amarillo intenso** (sin pintar el fondo), para que sigan legibles los números de cada celda.
+4. Cuando hay solución, el camino óptimo se marca con borde y fondo **teal smoke** (`#B4CDCD`, tinte suave), para que sigan legibles los números de cada celda.
 
 ## Controles
 

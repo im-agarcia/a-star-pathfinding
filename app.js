@@ -47,6 +47,8 @@
     btnRun: document.getElementById("btn-run"),
     btnStep: document.getElementById("btn-step"),
     btnReset: document.getElementById("btn-reset"),
+    pathBorder: document.getElementById("path-border"),
+    pathFill: document.getElementById("path-fill"),
   };
 
   let cols = 4;
@@ -75,6 +77,29 @@
   function setStatus(msg, type = "") {
     els.status.textContent = msg;
     els.status.className = "status" + (type ? ` ${type}` : "");
+  }
+
+  function hexToRgba(hex, alpha) {
+    let h = hex.replace("#", "");
+    if (h.length === 3) {
+      h = h
+        .split("")
+        .map((ch) => ch + ch)
+        .join("");
+    }
+    const n = parseInt(h, 16);
+    const r = (n >> 16) & 255;
+    const g = (n >> 8) & 255;
+    const b = n & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  function applyPathColors() {
+    const border = els.pathBorder.value;
+    const fill = els.pathFill.value;
+    document.documentElement.style.setProperty("--path-border", border);
+    // Semi-transparent so f, g, h y la flecha sigan legibles.
+    document.documentElement.style.setProperty("--path-fill", hexToRgba(fill, 0.45));
   }
 
   function initGrid(newCols, newRows, preserve = true) {
@@ -125,6 +150,8 @@
 
     // Default demo obstacles for 4x4 like the board
     if (!preserve && rows === 4 && cols === 4) {
+      cells[start.r][start.c] = "empty";
+      cells[end.r][end.c] = "empty";
       cells[0][2] = "block";
       cells[1][2] = "block";
       start = { r: 0, c: 1 };
@@ -477,7 +504,7 @@
       syncView();
       if (run.found) {
         setStatus(
-          `Camino encontrado. Nodos cerrados: ${run.closedIds.length}. El camino está resaltado en amarillo.`,
+          `Camino encontrado. Nodos cerrados: ${run.closedIds.length}. El camino está resaltado con el color elegido.`,
           "ok"
         );
       } else {
@@ -515,7 +542,7 @@
       if (run.finished) {
         setStatus(
           run.found
-            ? "Camino encontrado. Resaltado en amarillo."
+            ? "Camino encontrado. Resaltado con el color elegido."
             : "No hay camino hasta B.",
           run.found ? "ok" : "err"
         );
@@ -548,6 +575,10 @@
   els.btnRun.addEventListener("click", runAll);
   els.btnStep.addEventListener("click", runStep);
   els.btnReset.addEventListener("click", () => clearComputation(true));
+
+  els.pathBorder.addEventListener("input", applyPathColors);
+  els.pathFill.addEventListener("input", applyPathColors);
+  applyPathColors();
 
   // Boot with the classic 4×4 example from the board
   initGrid(4, 4, false);
